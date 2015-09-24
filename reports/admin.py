@@ -1,3 +1,8 @@
 from django.contrib import admin
+from reports.models import CountryReport
 
-# Register your models here.
+class CountryReportAdmin(admin.ModelAdmin):
+    model = CountryReport
+    
+    
+admin.site.register(CountryReport)

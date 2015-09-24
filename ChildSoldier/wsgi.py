@@ -1,3 +1,4 @@
+#pylint: skip-file
 """
 WSGI config for ChildSoldier project.
 
