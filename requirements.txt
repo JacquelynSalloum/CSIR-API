@@ -1,0 +1,5 @@
+django==1.8.2
+pylint
+pytest
+django-suit
+djangorestframework==3.2.4
