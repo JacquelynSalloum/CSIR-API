@@ -1,3 +1,6 @@
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+
+
 """
 Django settings for ChildSoldier project.
 
@@ -31,6 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'suit', # Must go before django.contrib.admin
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,8 +60,7 @@ ROOT_URLCONF = 'ChildSoldier.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -69,6 +72,10 @@ TEMPLATES = [
         },
     },
 ]
+
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+)
 
 WSGI_APPLICATION = 'ChildSoldier.wsgi.application'
 
