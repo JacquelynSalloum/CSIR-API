@@ -1,5 +1,6 @@
 django==1.8.2
-pylint
-pytest
-django-suit
+pylint==1.4.4
+pytest==2.8.1
+django-suit==0.2.15
 djangorestframework==3.2.4
+pytest-django==2.9.1
