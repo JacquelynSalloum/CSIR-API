@@ -1,0 +1,1 @@
+web: gunicorn ChildSoldier.wsgi --log-file -
