@@ -10,7 +10,7 @@ class CountryReport(models.Model):
 
 class Maps(models.Model):
     country = models.CharField(max_length=255)  # TODO: Add choices enum for countries
-    map_url = models.CharField(max_length=255)
+    map_image = models.ImageField(upload_to='/static/maps/')
     report = models.ForeignKey(CountryReport)
 
 

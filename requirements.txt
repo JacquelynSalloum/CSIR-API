@@ -3,3 +3,4 @@ pylint
 pytest
 django-suit
 djangorestframework==3.2.4
+pillow==3.0.0
