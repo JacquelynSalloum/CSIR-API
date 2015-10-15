@@ -1,0 +1,10 @@
+{
+  "name":"ChildSoldierInitiativeReport",
+  "scripts":{
+    "postdeploy":"python manage.py migrate"
+  },
+  "env":{},
+  "addons":[
+    "heroku-postgresql"
+  ]
+}
