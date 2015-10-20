@@ -17,6 +17,18 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from django.conf.urls import url, include
+from rest_framework import routers
+from reports import views
+
+router = routers.DefaultRouter()
+router.register(r'countryreport', views.CountryReportViewSet)
+router.register(r'section', views.SectionViewSet)
+router.register(r'maps', views.MapsViewSet)
+
+
+
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include(router.urls)),
+    url(r'^admin/', include(admin.site.urls))
 ]
