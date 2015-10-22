@@ -1,14 +1,15 @@
 import pytest
+from reports.serializers import SectionSerializer
+from model_mommy import mommy
+from ChildSoldier.utils import dict_from_attrs, dict_with_keys
 
 
-#@pytest.mark.django_db
-#def test_series_serialization(series):
+@pytest.mark.django_db
+def test_series_serialization():
+    section = mommy.make('reports.section')
+    serializer = SectionSerializer(section)
+    serialized_data = serializer.data
 
-#    Ensure Series Serialization.
+    fields = ['id', 'title', 'order', 'content']
 
-#    serializer = SeriesSerializer(series)
-#    serialized_data = serializer.data
-
-#    fields = ['id', 'name', 'description', 'network', 'poster_image', 'banner_image', ]
-
-#    assert dict_from_attrs(series, fields) == dict_with_keys(serialized_data, fields)
+    assert dict_from_attrs(section, fields) == dict_with_keys(serialized_data, fields)
