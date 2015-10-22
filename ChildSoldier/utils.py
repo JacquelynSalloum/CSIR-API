@@ -1,3 +1,7 @@
+#pylint: missing-docstring
+# TODO: Fix this error, this is temporary for the demo
+
+
 def dict_from_attrs(obj, list_of_attrs):
     """
     :param obj: Object to have attributes extracted
