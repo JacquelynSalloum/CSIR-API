@@ -1,4 +1,4 @@
-from reports.models import CountryReport, Maps, Section
+from reports.models import CountryReport, Map, Section
 from rest_framework import serializers
 
 
@@ -10,7 +10,7 @@ class CountryReportSerializer(serializers.ModelSerializer):
 
 class MapsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Maps
+        model = Map
         fields = ('id', 'country', 'map_url', 'report')
 
 

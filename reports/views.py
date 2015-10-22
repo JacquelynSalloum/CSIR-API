@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from reports.models import Maps, Section, CountryReport
+from reports.models import Map, Section, CountryReport
 from reports.serializers import MapsSerializer, SectionSerializer, CountryReportSerializer
 
 
@@ -7,8 +7,9 @@ class CountryReportViewSet(viewsets.ModelViewSet):
     queryset = CountryReport.objects.all()
     serializer_class = CountryReportSerializer
 
+
 class MapsViewSet(viewsets.ModelViewSet):
-    queryset = Maps.objects.all()
+    queryset = Map.objects.all()
     serializer_class = MapsSerializer
 
 
