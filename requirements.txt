@@ -6,3 +6,4 @@ djangorestframework==3.2.4
 pytest-django==2.9.1
 django-toolbelt
 django-rest-swagger==0.3.4
+model_mommy
