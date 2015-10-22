@@ -1,7 +1,5 @@
 def dict_from_attrs(obj, list_of_attrs):
     """
-    ys: List of keys to extract
-    :return: New dictionary using the given dict, containing only the given keys
     :param obj: Object to have attributes extracted
     :param list_of_attrs: List of attributes to extract
     :return: Dictionary built by extracting the attributes from the given object
@@ -12,6 +10,7 @@ def dict_from_attrs(obj, list_of_attrs):
 def dict_with_keys(dictionary, list_of_keys):
     """
     :param dictionary: Dict to have keys extracted
-    :param list_of_keys
+    :param list_of_keys: List of keys to extract
+    :return: New dictionary using the given dict, containing only the given keys
     """
     return {key: dictionary[key] for key in list_of_keys}
