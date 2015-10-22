@@ -1,5 +1,4 @@
-#pylint: missing-docstring
-# TODO: Fix this error, this is temporary for the demo
+#pylint: skip-file
 
 
 def dict_from_attrs(obj, list_of_attrs):
