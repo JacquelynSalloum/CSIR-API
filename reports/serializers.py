@@ -5,16 +5,16 @@ from rest_framework import serializers
 class CountryReportSerializer(serializers.ModelSerializer):
     class Meta:
         model = CountryReport
-        fields = ('title', 'subtitle')
+        fields = ('id', 'title', 'subtitle')
 
 
 class MapsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Maps
-        fields = ('country', 'map_url', 'report')
+        fields = ('id', 'country', 'map_url', 'report')
 
 
 class SectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Section
-        fields = ('title', 'report', 'order', 'section', 'content')
+        fields = ('id', 'title', 'report', 'order', 'section', 'content')
