@@ -4,6 +4,6 @@ pytest==2.8.1
 django-suit==0.2.15
 djangorestframework==3.2.4
 pytest-django==2.9.1
-pillow==3.0.0
 django-toolbelt
 django-rest-swagger==0.3.4
+model_mommy
