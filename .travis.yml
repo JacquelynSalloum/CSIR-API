@@ -4,7 +4,7 @@ python:
 sudo: false
 
 # command to install dependencies
-install: "pip install -r requireents/develop.txt"
+install: "pip install -r requirements/staging.txt"
 
 # command to run tests
 script: py.test && pylint ChildSoldier
