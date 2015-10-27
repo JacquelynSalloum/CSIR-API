@@ -1,4 +1,5 @@
 from django.db import models
+from redactor.fields import RedactorField
 
 
 class CountryReport(models.Model):
@@ -26,7 +27,7 @@ class Section(models.Model):
     report = models.ForeignKey(CountryReport)
     order = models.PositiveIntegerField()
     section = models.ForeignKey('self', related_name='section_section', blank=True, null=True)
-    content = models.TextField(blank=True, null=True)
+    content = RedactorField(verbose_name=u'Text')
 
     def __unicode__(self):
         return '{title}'.format(title=self.title)
