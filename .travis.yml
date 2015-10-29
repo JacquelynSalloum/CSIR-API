@@ -1,14 +1,17 @@
 language: python
 python:
-  - "3.4"
+- '3.4'
 sudo: false
-
-# command to install dependencies
-install: "pip install -r requirements.txt"
-
-# command to run tests
+install: pip install -r requirements/staging.txt
 script: py.test && pylint ChildSoldier
-
-# notifications
 notifications:
   slack: outreach2015:rAnIvuM3klyHrwQDQJHvXbJ1
+deploy:
+  provider: heroku
+  api_key:
+    secure: XA2b46gJTv1arVKhLx0dU2w9tw9MMXXIOhQmxa9nrtLuqq27YCXqIl3O0PjLZXPpcsjmOUIGEFHcKA7tSbkS8uBJKifafXPQ+6Cj6Q3QBbN/XoAd0RKo+Eb7susYA+WUiWKFApe5kTeQU0aW43JV1M8msS1JiCSOB/ATOF8GziED+tQndQERvAIjYAqIKdqy52rDNL+4n7djthEsQABzvdbb0h+RAOn2gGvvfFjYJ0XbCYBYPRAxxdJLlcv8x/27ShGYiuJvObwOCLLHSNl7lF+o6mUfFFoPQSVtCoxTAtjoQH8cdb/9cOLGEDHlN9+ZeHJXV5xM3pBC/1gk4XuKQ/va87FSnYKfw/inhJ2HluPMookOY/zrKhIvUEXzDLTm1D6dcDxe38pn0SKMVTlwfsm/CPor+JvjVg6k8Z/0SmnoRxuMq2wRbhjDMHg4rfjwPz5kJSsjbxToP+s2DSuCuXYfRXtmhsvJw326bnevBLpkQDlajE0UGRmPxwsFWsIYlXVHkh83Jm5bOycAB2ntnPPF8Ms37aylt4jynsffeACFhZeIG32dViu0Jk6acr+IAGXRxk2cMW3R6i38kA2hS+Qld6mV4UU+SmzKQs4nUm1PCloiGNzQAQnGj/qIthZrieLkQTEbtMBP5yTUrfvbh6FCfL/vWUfB++be0GOyrCM=
+  app: childsoldiers-api
+  on:
+    branch: develop
+  run:
+    - "python manage.py migrate"
