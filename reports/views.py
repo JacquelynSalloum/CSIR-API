@@ -7,24 +7,19 @@ from rest_framework.response import Response
 
 
 class CountryReportViewSet(viewsets.ModelViewSet):
+    permission_classes = (Or(IsAuthenticated, get_guest_permissions_class(['list', 'retrieve'])), )
     queryset = CountryReport.objects.all()
     serializer_class = CountryReportSerializer
 
 
 class MapsViewSet(viewsets.ModelViewSet):
+    permission_classes = (Or(IsAuthenticated, get_guest_permissions_class(['list', 'retrieve'])), )
     queryset = Map.objects.all()
     serializer_class = MapsSerializer
 
 
 class SectionViewSet(viewsets.ModelViewSet):
+    permission_classes = (Or(IsAuthenticated, get_guest_permissions_class(['list', 'retrieve'])), )
     queryset = Section.objects.all()
     serializer_class = SectionSerializer
 
-class PostPermission(APIView):
-    permission_classes = (IsAuthenticated,)
-
-    def get(self, request, format=None):
-        content = {
-            'status': 'request was permitted'
-        }
-        return Response(content)
