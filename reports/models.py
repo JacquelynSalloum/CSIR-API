@@ -8,7 +8,7 @@ class CountryReport(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return '{title}'.format(title=self.title)
 
 
@@ -18,7 +18,7 @@ class Map(models.Model):
     map_image = models.FileField(upload_to='/static/maps/')
     report = models.ForeignKey(CountryReport)
 
-    def __unicode__(self):
+    def __str__(self):
         return '{title}'.format(title=self.title)
 
 
@@ -27,7 +27,7 @@ class Section(models.Model):
     report = models.ForeignKey(CountryReport)
     order = models.PositiveIntegerField()
     section = models.ForeignKey('self', related_name='section_section', blank=True, null=True)
-    content = RedactorField(verbose_name=u'Text')
+    content = models.TextField(blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return '{title}'.format(title=self.title)
