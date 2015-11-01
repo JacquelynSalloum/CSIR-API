@@ -4,10 +4,6 @@ from redactor.widgets import RedactorEditor
 from reports.models import CountryReport, Map, Section
 
 
-class CountryReportAdmin(admin.ModelAdmin):
-    model = CountryReport
-
-
 class SectionAdminForm(forms.ModelForm):
     class Meta:
         exclude = []
@@ -16,8 +12,14 @@ class SectionAdminForm(forms.ModelForm):
         }
 
 
-class SectionAdmin(admin.ModelAdmin):
+class SectionAdmin(admin.StackedInline):
     form = SectionAdminForm
+    model = Section
+
+
+class CountryReportAdmin(admin.ModelAdmin):
+    model = CountryReport
+    inlines = [SectionAdmin]
 
 
 class MapAdmin(admin.ModelAdmin):
@@ -25,4 +27,3 @@ class MapAdmin(admin.ModelAdmin):
 
 admin.site.register(CountryReport, CountryReportAdmin)
 admin.site.register(Map, MapAdmin)
-admin.site.register(Section, SectionAdmin)
