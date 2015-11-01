@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'rest_framework_swagger',
     'reports',
     'rest_framework',
+    'redactor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -117,3 +118,5 @@ STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+REDACTOR_OPTIONS = {'lang': 'en'}
+REDACTOR_UPLOAD = '/static/uploads'
