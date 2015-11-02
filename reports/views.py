@@ -14,5 +14,5 @@ class MapsViewSet(viewsets.ModelViewSet):
 
 
 class SectionViewSet(viewsets.ModelViewSet):
-    queryset = Section.objects.all()
+    queryset = Section.objects.filter(parent=None)
     serializer_class = SectionSerializer

@@ -1,5 +1,4 @@
 from django.db import models
-from redactor.fields import RedactorField
 
 
 class CountryReport(models.Model):
@@ -26,7 +25,7 @@ class Section(models.Model):
     title = models.CharField(max_length=255)
     report = models.ForeignKey(CountryReport)
     order = models.PositiveIntegerField()
-    section = models.ForeignKey('self', related_name='section_section', blank=True, null=True)
+    parent = models.ForeignKey('self', blank=True, null=True, related_name='children')
     content = models.TextField(blank=True)
 
     def __str__(self):
