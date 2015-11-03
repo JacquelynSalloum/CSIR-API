@@ -20,6 +20,7 @@ from django.contrib import admin
 from django.conf.urls import url, include
 from rest_framework import routers
 from reports import views
+from django.conf.urls import include
 
 router = routers.DefaultRouter()
 router.register(r'countryreport', views.CountryReportViewSet)
@@ -33,4 +34,11 @@ urlpatterns = [
     url(r'^docs/', include('rest_framework_swagger.urls')),
     url(r'^api/', include(router.urls)),
     url(r'^redactor/', include('redactor.urls')),
+    url(r'^api/users/$', views.UserList.as_view()),
+    url(r'^api/users/(?P<pk>[0-9]+)/$', views.UserList),
+]
+
+urlpatterns += [
+    url(r'^api-auth/', include('rest_framework.urls',
+                               namespace='rest_framework'))
 ]
