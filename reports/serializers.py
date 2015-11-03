@@ -34,5 +34,5 @@ class CountryReportSerializer(serializers.ModelSerializer):
 class MapsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Map
-        fields = ('id', 'country', 'map_image', 'report')
+        fields = ('id', 'map', 'title', 'description', 'long', 'lat',)
 
