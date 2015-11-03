@@ -2,6 +2,7 @@ from django import forms
 from django.contrib import admin
 from redactor.widgets import RedactorEditor
 from reports.models import CountryReport, Map, Section
+from suit.admin import SortableStackedInline
 
 
 class SectionAdminForm(forms.ModelForm):
@@ -12,9 +13,10 @@ class SectionAdminForm(forms.ModelForm):
         }
 
 
-class SectionAdmin(admin.StackedInline):
+class SectionAdmin(SortableStackedInline):
     form = SectionAdminForm
     model = Section
+    extra = 0
 
 
 class CountryReportAdmin(admin.ModelAdmin):
