@@ -1,4 +1,4 @@
-from reports.models import CountryReport, Map, Section, MapPoint
+from reports.models import CountryReport, Map, Section, MapPoint, Country
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
@@ -9,27 +9,33 @@ class RecursiveField(serializers.Serializer):
         return serializer.data
 
 
+class CountrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Country
+        fields = ('name',)
+
+
 class SectionSerializer(serializers.ModelSerializer):
     children = RecursiveField(many=True)
 
     class Meta:
         model = Section
-        fields = ('id', 'order', 'title', 'content', 'parent', 'children')
+        fields = ('id', 'order', 'title', 'content', 'children')
 
 
 class CountryReportSerializer(serializers.ModelSerializer):
     section_set = serializers.SerializerMethodField('get_parent_sections')
 
     # This calls the sections serializer but filters it so that we only retrieve
-    # sections that have no parents.
+    # sections that have no parents and belong to the given report.
     def get_parent_sections(self, obj):
-        parent_sections = Section.objects.get(parent=None, pk=obj.pk)
-        serializer = SectionSerializer(parent_sections)
+        parent_sections = Section.objects.filter(parent=None, report=obj)
+        serializer = SectionSerializer(parent_sections, many=True)
         return serializer.data
 
     class Meta:
         model = CountryReport
-        fields = ('id', 'title', 'subtitle', 'section_set')
+        fields = ('id', 'country', 'title', 'subtitle', 'section_set')
 
 
 class MapPointSerializer(serializers.ModelSerializer):

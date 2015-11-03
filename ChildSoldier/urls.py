@@ -23,9 +23,10 @@ from reports import views
 from django.conf.urls import include
 
 router = routers.DefaultRouter()
-router.register(r'countryreport', views.CountryReportViewSet)
-router.register(r'section', views.SectionViewSet)
-router.register(r'maps', views.MapsViewSet)
+router.register(r'countryreports', views.CountryReportViewSet)
+router.register(r'sections', views.SectionViewSet)
+router.register(r'maps', views.MapViewSet)
+router.register(r'countries', views.CountryViewSet)
 
 
 
