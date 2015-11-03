@@ -19,7 +19,8 @@ class SectionSerializer(serializers.ModelSerializer):
 class CountryReportSerializer(serializers.ModelSerializer):
     section_set = serializers.SerializerMethodField('get_parent_sections')
 
-    @staticmethod
+    # This calls the sections serializer but filters it so that we only retrieve
+    # sections that have no parents.
     def get_parent_sections(self, obj):
         parent_sections = Section.objects.get(parent=None, pk=obj.pk)
         serializer = SectionSerializer(parent_sections)
