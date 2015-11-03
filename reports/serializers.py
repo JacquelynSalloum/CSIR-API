@@ -1,5 +1,6 @@
 from reports.models import CountryReport, Map, Section
 from rest_framework import serializers
+from django.contrib.auth.models import User
 
 
 class RecursiveField(serializers.Serializer):
@@ -36,3 +37,8 @@ class MapsSerializer(serializers.ModelSerializer):
         model = Map
         fields = ('id', 'country', 'map_image', 'report')
 
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username',)
