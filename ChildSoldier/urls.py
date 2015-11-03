@@ -34,8 +34,8 @@ urlpatterns = [
     url(r'^docs/', include('rest_framework_swagger.urls')),
     url(r'^api/', include(router.urls)),
     url(r'^redactor/', include('redactor.urls')),
-    url(r'^users/$', views.UserList.as_view()),
-    url(r'^users/(?P<pk>[0-9]+)/$', views.UserList),
+    url(r'^api/users/$', views.UserList.as_view()),
+    url(r'^api/users/(?P<pk>[0-9]+)/$', views.UserList),
 ]
 
 urlpatterns += [
