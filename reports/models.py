@@ -21,7 +21,7 @@ class CountryReport(models.Model):
 
 class Map(models.Model):
     title = models.CharField(max_length=255)
-    report = models.ForeignKey(CountryReport)
+    report = models.ForeignKey(CountryReport, related_name='maps')
     long = models.DecimalField(max_digits=10, decimal_places=6, verbose_name='longitude')
     lat = models.DecimalField(max_digits=10, decimal_places=6, verbose_name='latitude')
     default_zoom = models.IntegerField()
