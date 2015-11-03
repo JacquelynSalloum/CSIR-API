@@ -19,6 +19,7 @@ def dict_with_keys(dictionary, list_of_keys):
     """
     return {key: dictionary[key] for key in list_of_keys}
 
+
 def get_guest_permissions_class(allowed_actions=None):
     """
     get a guest permissions class with the given allowed actions
