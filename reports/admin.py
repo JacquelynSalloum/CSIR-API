@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib import admin
 from redactor.widgets import RedactorEditor
-from reports.models import CountryReport, Map, Section
+from reports.models import CountryReport, Map, Section, Country
 from suit.admin import SortableStackedInline
 
 
@@ -27,5 +27,10 @@ class CountryReportAdmin(admin.ModelAdmin):
 class MapAdmin(admin.ModelAdmin):
     model = Map
 
+
+class CountryAdmin(admin.ModelAdmin):
+    model = Country
+
 admin.site.register(CountryReport, CountryReportAdmin)
 admin.site.register(Map, MapAdmin)
+admin.site.register(Country, CountryAdmin)
