@@ -37,6 +37,7 @@ class MapsSerializer(serializers.ModelSerializer):
         model = Map
         fields = ('id', 'country', 'map_image', 'report')
 
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
