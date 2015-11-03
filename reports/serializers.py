@@ -1,4 +1,4 @@
-from reports.models import CountryReport, Map, Section
+from reports.models import CountryReport, Map, Section, MapPoint
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
@@ -32,10 +32,18 @@ class CountryReportSerializer(serializers.ModelSerializer):
         fields = ('id', 'title', 'subtitle', 'section_set')
 
 
-class MapsSerializer(serializers.ModelSerializer):
+class MapPointSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MapPoint
+        fields = ('id', 'map', 'title', 'description', 'long', 'lat',)
+
+
+class MapSerializer(serializers.ModelSerializer):
+    points = MapPointSerializer(many=True)
+
     class Meta:
         model = Map
-        fields = ('id', 'title', 'report', 'long', 'lat', 'default_zoom',)
+        fields = ('id', 'title', 'long', 'lat', 'default_zoom', 'points')
 
 
 class UserSerializer(serializers.ModelSerializer):

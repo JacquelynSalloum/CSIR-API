@@ -23,7 +23,7 @@ class Map(models.Model):
 
 
 class MapPoint(models.Model):
-    map = models.ForeignKey(Map)
+    map = models.ForeignKey(Map, related_name='points')
     title = models.CharField(max_length=255)
     description = models.TextField()
     long = models.DecimalField(max_digits=9, decimal_places=6)

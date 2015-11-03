@@ -2,9 +2,10 @@ from rest_condition import Or
 from rest_framework import viewsets
 from ChildSoldier.utils import get_guest_permissions_class
 from rest_framework.generics import ListAPIView, RetrieveAPIView
-from reports.models import Map, Section, CountryReport
+from reports.models import Map, Section, CountryReport, MapPoint
 from rest_framework.permissions import IsAuthenticated
-from reports.serializers import MapsSerializer, SectionSerializer, CountryReportSerializer, UserSerializer
+from reports.serializers import (MapSerializer, SectionSerializer, CountryReportSerializer, UserSerializer,
+                                 MapPointSerializer)
 from django.contrib.auth.models import User
 
 
@@ -17,10 +18,16 @@ class CountryReportViewSet(viewsets.ModelViewSet):
         serializer.save(owner=self.request.user)
 
 
-class MapsViewSet(viewsets.ModelViewSet):
+class MapViewSet(viewsets.ModelViewSet):
     permission_classes = (Or(IsAuthenticated, get_guest_permissions_class(['list', 'retrieve'])), )
     queryset = Map.objects.all()
-    serializer_class = MapsSerializer
+    serializer_class = MapSerializer
+
+
+class MapPointViewSet(viewsets.ModelViewSet):
+    permission_classes = (Or(IsAuthenticated, get_guest_permissions_class(['list', 'retrieve'])),)
+    queryset = MapPoint.objects.all()
+    serializer_class = MapPointSerializer
 
 
 class SectionViewSet(viewsets.ModelViewSet):
