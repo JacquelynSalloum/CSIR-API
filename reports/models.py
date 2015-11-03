@@ -15,8 +15,8 @@ class CountryReport(models.Model):
 class Map(models.Model):
     title = models.CharField(max_length=255)
     report = models.ForeignKey(CountryReport)
-    long = models.DecimalField(max_digits=9,decimal_places=6)
-    lat = models.DecimalField(max_digits=8,decimal_places=6)
+    long = models.DecimalField(max_digits=9, decimal_places=6)
+    lat = models.DecimalField(max_digits=8, decimal_places=6)
     default_zoom = models.IntegerField()
 
     def __str__(self):
@@ -29,6 +29,9 @@ class MapPoint(models.Model):
     description = models.TextField()
     long = models.DecimalField(max_digits=9, decimal_places=6)
     lat = models.DecimalField(max_digits=8, decimal_places=6)
+
+    def __str__(self):
+        return '{title}'.format(title=self.title)
 
 
 class Section(models.Model):
