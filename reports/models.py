@@ -13,9 +13,21 @@ class CountryReport(models.Model):
 
 class Map(models.Model):
     title = models.CharField(max_length=255)
-    country = models.CharField(max_length=255)  # TODO: Add choices enum for countries
-    map_image = models.FileField(upload_to='/static/maps/')
     report = models.ForeignKey(CountryReport)
+    long = models.DecimalField(max_digits=9, decimal_places=6)
+    lat = models.DecimalField(max_digits=8, decimal_places=6)
+    default_zoom = models.IntegerField()
+
+    def __str__(self):
+        return '{title}'.format(title=self.title)
+
+
+class MapPoint(models.Model):
+    map = models.ForeignKey(Map)
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    long = models.DecimalField(max_digits=9, decimal_places=6)
+    lat = models.DecimalField(max_digits=8, decimal_places=6)
 
     def __str__(self):
         return '{title}'.format(title=self.title)
