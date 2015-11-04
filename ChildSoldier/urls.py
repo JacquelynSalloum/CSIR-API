@@ -17,26 +17,21 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from django.conf.urls import url, include
 from rest_framework import routers
 from reports import views
-from django.conf.urls import include
 
 router = routers.DefaultRouter()
 router.register(r'countryreports', views.CountryReportViewSet)
 router.register(r'sections', views.SectionViewSet)
 router.register(r'maps', views.MapViewSet)
 router.register(r'countries', views.CountryViewSet)
-
-
+router.register(r'users', views.UserView, 'list')
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^docs/', include('rest_framework_swagger.urls')),
-    url(r'^api/', include(router.urls)),
+    url(r'^', include(router.urls)),
     url(r'^redactor/', include('redactor.urls')),
-    url(r'^api/users/$', views.UserList.as_view()),
-    url(r'^api/users/(?P<pk>[0-9]+)/$', views.UserList),
 ]
 
 urlpatterns += [

@@ -16,7 +16,7 @@ class SectionAdminForm(forms.ModelForm):
 class SectionAdmin(SortableStackedInline):
     form = SectionAdminForm
     model = Section
-    extra = 0
+    extra = 1
 
 
 class CountryReportAdmin(admin.ModelAdmin):
