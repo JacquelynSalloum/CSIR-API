@@ -1,10 +1,10 @@
 from rest_condition import Or
 from rest_framework import viewsets
 from rest_framework.response import Response
-from ChildSoldier.utils import get_guest_permissions_class
-from rest_framework.generics import ListAPIView, RetrieveAPIView, get_object_or_404
+from ChildSoldier.utils import get_guest_permissions_class, IsStaffOrTargetUser
+from rest_framework.generics import get_object_or_404
 from reports.models import Map, Section, CountryReport, MapPoint, Country
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from reports.serializers import (MapSerializer, SectionSerializer, CountryReportSerializer, UserSerializer,
                                  MapPointSerializer, CountrySerializer, CountryReportRetrieveSerializer)
 from django.contrib.auth.models import User
@@ -25,9 +25,6 @@ class CountryReportViewSet(viewsets.ModelViewSet):
         countryreport = get_object_or_404(queryset, pk=pk)
         serializer = CountryReportRetrieveSerializer(countryreport)
         return Response(serializer.data)
-
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
 
 
 class CountryViewSet(viewsets.ModelViewSet):
@@ -54,11 +51,12 @@ class SectionViewSet(viewsets.ModelViewSet):
     serializer_class = SectionSerializer
 
 
-class UserList(ListAPIView):
+class UserView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    model = User
 
-
-class UserDetail(RetrieveAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+    def get_permissions(self):
+        # allow non-authenticated user to create via POST
+        return (AllowAny() if self.request.method == 'POST'
+                else IsStaffOrTargetUser()),
