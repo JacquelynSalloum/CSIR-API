@@ -66,9 +66,9 @@ class UserSerializer(serializers.ModelSerializer):
         write_only_fields = ('password',)
         read_only_fields = ('is_staff', 'is_superuser', 'is_active', 'date_joined',)
 
-    def restore_object(self, attrs, instance=None):
+    def create(self, validated_data):
         # call set_password on user object. Without this
         # the password will be stored in plain text.
-        user = super(UserSerializer, self).restore_object(attrs, instance)
-        user.set_password(attrs['password'])
+        user = super(UserSerializer, self).create(validated_data)
+        user.set_password(validated_data['password'])
         return user
