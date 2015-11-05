@@ -73,11 +73,3 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
-
-    def post_save(self, obj, created=False):
-        """
-        On creation, replace the raw password with a hashed version.
-        """
-        if created:
-            obj.set_password(obj.password)
-        obj.save()
