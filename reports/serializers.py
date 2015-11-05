@@ -44,7 +44,7 @@ class CountryReportRetrieveSerializer(serializers.ModelSerializer):
     # This calls the sections serializer but filters it so that we only retrieve
     # sections that have no parents and belong to the given report.
     def get_parent_sections(self, obj):
-        parent_sections = Section.objects.filter(parent=None, report=obj)
+        parent_sections = Section.objects.filter(parent=None, report=obj).order_by('order')
         serializer = SectionSerializer(parent_sections, many=True)
         return serializer.data
 
@@ -71,4 +71,13 @@ class UserSerializer(serializers.ModelSerializer):
         # the password will be stored in plain text.
         user = super(UserSerializer, self).create(validated_data)
         user.set_password(validated_data['password'])
+        user.save()
         return user
+
+    def post_save(self, obj, created=False):
+        """
+        On creation, replace the raw password with a hashed version.
+        """
+        if created:
+            obj.set_password(obj.password)
+        obj.save()
