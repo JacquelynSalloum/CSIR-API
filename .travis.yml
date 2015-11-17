@@ -2,8 +2,8 @@ language: python
 python:
 - '3.4'
 sudo: false
-install: pip install -r requirements/staging.txt
-script: py.test && pylint ChildSoldier
+install: pip install -r API/requirements/staging.txt
+script: py.test API/ && pylint API/ChildSoldier
 notifications:
   slack: outreach2015:rAnIvuM3klyHrwQDQJHvXbJ1
 deploy:
@@ -14,4 +14,4 @@ deploy:
   on:
     branch: develop
   run:
-    - "python manage.py migrate"
+    - "python API/manage.py migrate"
