@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib import admin
-from redactor.widgets import RedactorEditor
+from suit_ckeditor.widgets import CKEditorWidget
 from reports.models import CountryReport, Map, Section, MapPoint, Country
 from suit.admin import SortableStackedInline
 
@@ -8,8 +8,9 @@ from suit.admin import SortableStackedInline
 class SectionAdminForm(forms.ModelForm):
     class Meta:
         exclude = []
+        model = Section
         widgets = {
-            'content': RedactorEditor(),
+            'content': CKEditorWidget(),
         }
 
 
