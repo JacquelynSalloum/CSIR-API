@@ -5,21 +5,7 @@
 
 <div class="container">
    <?php require("template/nav.php") ?>
-   <div class="row">
-     <div class="col-md-12">
-       <div class="panel panel-default">
-         <div class="panel-heading">
-           <h3 class="panel-title">Remeo Dallaire Child Soldier Initiative - Country Reports</h3>
-         </div>
-         <div class="panel-body">
-
-         </div>
-         <div class="panel-footer">
-
-         </div>
-       </div>
-     </div>
-   </div>
+   <?php // TODO: Add content here ?>
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
