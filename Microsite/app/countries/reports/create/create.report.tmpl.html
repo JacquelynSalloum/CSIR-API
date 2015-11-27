@@ -1,0 +1,14 @@
+<div class="createReport">
+    <form class="create-form" ng-show="isCreating" role="form" ng-submit="createReport()" novalidate>
+        <div class="form-group">
+            <label for="newReportTitle">Report Title</label>
+            <input type="text" class="form-control" id="newReportTitle" ng-model="newReport.title" placeholder="Enter title">
+        </div>
+        <div class="form-group">
+            <label for="newReportURL">Report URL</label>
+            <input type="text" class="form-control" id="newReportURL" ng-model="newReport.url" placeholder="Enter URL">
+        </div>
+        <button type="submit" class="btn btn-info btn-lg">Create</button>
+        <button type="button" class="btn btn-default btn-lg pull-right" ng-click="cancelCreating()">Cancel</button>
+    </form>
+</div>
