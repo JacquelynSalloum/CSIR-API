@@ -26,9 +26,12 @@
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <div ng-class="{active: isSelectedReport(report.id)}"  ng-repeat="report in reports | filter:{country:currentCountry.name}">
-                        <a href="{{report.url}}" target="_blank">{{report.title}}</a>
+                        <a ng-click="setCurrentReport(report)" target="_blank">{{report.title}}</a>
                     </div>
                     <hr/>
+                    <div ng-class="{active: isSelectedSection(section.id)}"  ng-repeat="section in sections | filter:{report:currentReport.title}">
+                        {{section.title}}
+                    </div>
 
                 </div>
             </div>
