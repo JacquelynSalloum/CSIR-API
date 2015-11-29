@@ -12,7 +12,7 @@ class RecursiveField(serializers.Serializer):
 class CountrySerializer(serializers.ModelSerializer):
     class Meta:
         model = Country
-        fields = ('name',)
+        fields = ('id', 'name',)
 
 
 class SectionSerializer(serializers.ModelSerializer):
@@ -20,7 +20,7 @@ class SectionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Section
-        fields = ('id', 'order', 'title', 'content', 'children')
+        fields = ('id', 'order', 'report', 'title', 'content', 'children',)
 
 
 class MapPointSerializer(serializers.ModelSerializer):
