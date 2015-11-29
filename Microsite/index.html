@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="Eggly">
+<html ng-app="ChildSoldier">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
@@ -8,9 +8,19 @@
         <link rel="stylesheet" href="assets/css/normalize.css">
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
-        <link rel="stylesheet" href="assets/css/eggly.css">
+        <link rel="stylesheet" href="assets/css/childsoldier.css">
         <link rel="stylesheet" href="assets/css/animations.css">
     </head>
+
+    <script type="text/ng-template"  id="section_renderer">
+        <div><a ng-click="selectSection(section)">{{section.title}}</a></div>
+        <div ng-show="openSections.indexOf(section.id) != -1">{{section.content}}
+        <ul>
+            <li ng-repeat="section in section.children" ng-include="'section_renderer'"></li>
+        </ul>
+            </div>
+    </script>
+
     <body ng-controller="MainCtrl">
         <div class="container-fluid">
             <div class="row">
@@ -25,12 +35,15 @@
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <div ng-class="{active: isSelectedReport(report.id)}"  ng-repeat="report in reports | filter:{country:currentCountry.name}">
-                        <a ng-click="setCurrentReport(report)" target="_blank">{{report.title}}</a>
+                    <div ng-class="{active: isSelectedReport(report.id)}"
+                         ng-show="currentCountry != null"
+                         ng-repeat="report in reports | filter:{country:currentCountry.id}">
+                        <a ng-click="setCurrentReport(report)" target="_blank">{{report.title}} - {{report.subtitle}}</a>
                     </div>
                     <hr/>
-                    <div ng-class="{active: isSelectedSection(section.id)}"  ng-repeat="section in sections | filter:{report:currentReport.title}">
-                        {{section.title}}
+                    <div ng-repeat="section in sections | filter:{report:currentReport.id}"
+                         ng-show="currentReport != null"
+                         ng-include="'section_renderer'">
                     </div>
 
                 </div>
