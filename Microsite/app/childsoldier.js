@@ -1,6 +1,4 @@
-angular.module('ChildSoldier', [
-
-    ])
+angular.module('ChildSoldier', ['ngSanitize'])
 
     .controller('MainCtrl', function ($scope, $http) {
 

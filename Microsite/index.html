@@ -14,7 +14,7 @@
 
     <script type="text/ng-template"  id="section_renderer">
         <div><a ng-click="selectSection(section)">{{section.title}}</a></div>
-        <div ng-show="openSections.indexOf(section.id) != -1">{{section.content}}
+        <div ng-if="openSections.indexOf(section.id) != -1" ng-bind-html="section.content">
         <ul>
             <li ng-repeat="section in section.children" ng-include="'section_renderer'"></li>
         </ul>
@@ -54,6 +54,7 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-sanitize.js"></script>
 
         <script src="app/childsoldier.js"></script>
     </body>
