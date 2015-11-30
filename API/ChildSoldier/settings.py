@@ -1,4 +1,4 @@
-#pylint: skip-file
+# pylint: skip-file
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
 
@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ['childsoldier-api.herokuapp.com']
 
 INSTALLED_APPS = (
     'suit', # Must go before django.contrib.admin
+    'suit_ckeditor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,7 +46,6 @@ INSTALLED_APPS = (
     'rest_framework_swagger',
     'reports',
     'rest_framework',
-    'redactor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -123,5 +123,3 @@ STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-REDACTOR_OPTIONS = {'lang': 'en'}
-REDACTOR_UPLOAD = '/static/uploads'

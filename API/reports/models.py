@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Country(models.Model):
+    # = models.IntegerField()
     name = models.CharField(max_length=255)
 
     def __str__(self):

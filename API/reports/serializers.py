@@ -20,7 +20,7 @@ class SectionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Section
-        fields = ('id', 'order', 'report', 'title', 'content', 'children',)
+        fields = ('id', 'order', 'title', 'content', 'children',)
 
 
 class MapPointSerializer(serializers.ModelSerializer):
@@ -34,7 +34,7 @@ class MapSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Map
-        fields = ('id', 'title', 'long', 'lat', 'default_zoom', 'points')
+        fields = ('id', 'title', 'long', 'lat', 'default_zoom', 'points',)
 
 
 class CountryReportRetrieveSerializer(serializers.ModelSerializer):
@@ -50,13 +50,13 @@ class CountryReportRetrieveSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CountryReport
-        fields = ('id', 'country', 'title', 'subtitle', 'section_set', 'maps')
+        fields = ('id', 'country', 'title', 'subtitle', 'section_set', 'maps',)
 
 
 class CountryReportSerializer(serializers.ModelSerializer):
     class Meta:
         model = CountryReport
-        fields = ('id', 'country', 'title', 'subtitle')
+        fields = ('id', 'country', 'title', 'subtitle',)
 
 
 class UserSerializer(serializers.ModelSerializer):
