@@ -20,7 +20,7 @@ class SectionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Section
-        fields = ('id', 'order', 'title', 'content', 'children',)
+        fields = ('id', 'order', 'report', 'title', 'content', 'children',)
 
 
 class MapPointSerializer(serializers.ModelSerializer):
