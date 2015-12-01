@@ -14,10 +14,11 @@
 
     <script type="text/ng-template"  id="section_renderer">
         <div><a ng-click="selectSection(section)">{{section.title}}</a></div>
-        <div ng-if="openSections.indexOf(section.id) != -1" ng-bind-html="section.content">
-        <ul>
-            <li ng-repeat="section in section.children" ng-include="'section_renderer'"></li>
-        </ul>
+        <div ng-if="openSections.indexOf(section.id) != -1">
+            <div ng-bind-html="section.content"></div>
+            <ul>
+                <li ng-repeat="section in section.children" ng-include="'section_renderer'"></li>
+            </ul>
             </div>
     </script>
 
