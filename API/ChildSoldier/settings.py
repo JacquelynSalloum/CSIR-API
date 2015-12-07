@@ -1,6 +1,6 @@
 # pylint: skip-file
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
-
+import dj_database_url
 
 """
 Django settings for ChildSoldier project.
@@ -89,19 +89,13 @@ REST_FRAMEWORK = {
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
-# If you want to run sqlite locally instead, uncomment below
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
-# Used for Heroku PostgreSQL
-import dj_database_url
-
-DATABASES['default'] = dj_database_url.config()
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -125,3 +119,7 @@ STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+import dj_database_url
+if os.getcwd() == "/app":
+    DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
