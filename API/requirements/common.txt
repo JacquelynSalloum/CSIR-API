@@ -1,5 +1,0 @@
-django==1.8.5
-django-suit==0.2.15
-djangorestframework==3.2.4
-django-rest-swagger==0.3.4
-rest_condition

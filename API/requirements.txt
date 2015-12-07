@@ -1,0 +1,12 @@
+django==1.8.5
+django-suit==0.2.15
+djangorestframework==3.2.4
+django-rest-swagger==0.3.4
+rest_condition==1.0.2
+django-debug-toolbar==1.4
+pylint==1.5.1
+pytest==2.8.4
+pytest-django==2.9.1
+model_mommy==1.2.5.1
+django-suit-ckeditor==0.0.2
+django-toolbelt==0.0.1
