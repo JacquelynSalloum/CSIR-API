@@ -4,8 +4,6 @@ from model_mommy import mommy
 from ChildSoldier.utils import dict_from_attrs, dict_with_keys
 
 
-# serializers
-# country
 @pytest.mark.django_db
 def test_country_serialization():
     country = mommy.make('reports.country')
@@ -16,7 +14,7 @@ def test_country_serialization():
 
     assert dict_from_attrs(country, fields) == dict_with_keys(serialized_data, fields)
 
-# section
+
 @pytest.mark.django_db
 def test_section_serialization():
     section = mommy.make('reports.section')
@@ -27,7 +25,7 @@ def test_section_serialization():
 
     assert dict_from_attrs(section, fields) == dict_with_keys(serialized_data, fields)
 
-# map point
+
 @pytest.mark.django_db
 def test_map_point_serialization():
 
@@ -42,7 +40,7 @@ def test_map_point_serialization():
 
     assert dict_from_attrs(map_point, fields) == dict_with_keys(serialized_data, fields)
 
-# map
+
 @pytest.mark.django_db
 def test_map_serialization():
 
@@ -54,7 +52,7 @@ def test_map_serialization():
 
     assert dict_from_attrs(map, fields) == dict_with_keys(serialized_data, fields)
 
-# country report retrieve
+
 @pytest.mark.django_db
 def test_country_report_retrieve_serialization():
     country_report_retrieve = mommy.make('reports.countryReport',)
@@ -67,7 +65,7 @@ def test_country_report_retrieve_serialization():
 
     assert dict_from_attrs(country_report_retrieve, fields) == dict_with_keys(serialized_data, fields)
 
-# country reports
+
 @pytest.mark.django_db
 def test_country_report_serialization():
     country_report = mommy.make('reports.countryReport')
@@ -79,6 +77,7 @@ def test_country_report_serialization():
     fields = ['id', 'title', 'subtitle', ]
 
     assert dict_from_attrs(country_report, fields) == dict_with_keys(serialized_data, fields)
+
 
 @pytest.mark.django_db
 def test_user_serialization():
