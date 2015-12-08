@@ -10,3 +10,4 @@ pytest-django==2.9.1
 model_mommy==1.2.5.1
 django-suit-ckeditor==0.0.2
 django-toolbelt==0.0.1
+django-cors-headers
